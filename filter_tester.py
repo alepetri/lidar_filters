@@ -1,18 +1,23 @@
-from LidarFilters import TemporalMedianFilter, RangeFilter
+"""Quick and dirty testing of classes in module lidar_filters"""
+
+from lidar_filters import TemporalMedianFilter, RangeFilter
 import numpy as np
+import random
 
-temp_med_filter = TemporalMedianFilter(3)
-rang_filter = RangeFilter(1.3,3.6)
+temp_med_filter = TemporalMedianFilter(4)
+rang_filter = RangeFilter(3,7)
 
+data = []
+for i in range(1000):
+    data.append(round(random.gauss(5,2.5)))
 
-print(temp_med_filter.update([0, 1, 2, 1, 3]))
-print(temp_med_filter.update([1, 5, 7, 1, 3]))
-print(temp_med_filter.update([2, 3, 4, 1, 0]))
-print(temp_med_filter.update([3, 3, 3, 1, 3]))
-print(temp_med_filter.update([10, 2, 4, 0, 0]))
-
-print(rang_filter.update([0, 1, 2, 1, 3]))
-print(rang_filter.update([1, 5, 7, 1, 3]))
-print(rang_filter.update([2, 3, 4, 1, 0]))
-print(rang_filter.update([3, 3, 3, 1, 3]))
-print(rang_filter.update([10, 2, 4, 0, 0]))
+print(data)
+print(temp_med_filter.update(data))
+print()
+for i in range(6):
+    data = []
+    for j in range(1000):
+        data.append(round(random.gauss(5,2.5)))
+    print(data)
+    print(temp_med_filter.update(data))
+    print()
