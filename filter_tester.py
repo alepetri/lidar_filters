@@ -1,7 +1,6 @@
 """Quick and dirty testing of classes in module lidar_filters"""
 
 from lidar_filters import TemporalMedianFilter, RangeFilter
-import numpy as np
 import random
 
 temp_med_filter = TemporalMedianFilter(4)
